@@ -1,0 +1,41 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    height: 100vh;
+    background-image: url(img/fundo.jpg);
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container{
+    background-color: rgba(165, 42, 42, 0.579);
+    border: 2px solid black;
+    border-radius: 12px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+    padding: 1rem;
+}
+
+.filpper{
+    width: 150px;
+    height: 200px;
+    background-color: blue;
+    background-image: url(img/verso.png);
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    border: 2px solid black;
+    border-radius: 10px;
+}
+
+.filpper:hover{
+    background-color: rgba(173, 216, 230, 0.627);
+    cursor: pointer;
+}
