@@ -1,26 +1,51 @@
 
-const listaPokemons = []
+async function fetchPokemons(){
 
-async function getPokemons(){
+    /* Buscar nome do pokemons de forma aleatoria na api */
+    const randomNumber = Math.floor(Math.random() * 800)
 
-  
-    for(var i =0; i < 12; i++){
-        /* Buscar nome do pokemons de forma aleatoria na api */
-        const randomNumber = Math.floor(Math.random() * 800)
+    /* Forma de fazer uma requisição via fectch*/
+    const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${randomNumber}`)
+    const data = await response.json()
 
-        /* Forma de fazer uma requisição via fectch*/
-        const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${randomNumber}`)
-        const data = await response.json()
-        
-        listaPokemons.push({
-            nome: data.name,
-            img: data.sprites.other.dream_world.front_default
-
-        })
-   
-    }
-
-    console.log(listaPokemons)
+    return data
 }
 
-getPokemons()
+/* Função responsavel em buscar a imagem do pokemon e validar se existe o link*/
+const getPokemons = async () => {
+    const listaPokemons = []
+    
+    while (listaPokemons.length < 14) {
+        const date =  await fetchPokemons()
+
+        if(date.sprites.other.dream_world.front_default !== null){
+             listaPokemons.push({
+                nome: date.name,
+                img: date.sprites.other.dream_world.front_default
+            })
+        }
+        // console.log(listaPokemons)
+    }
+    return listaPokemons
+}
+
+
+async function buildCards(){
+
+    const pokemon = await getPokemons()
+    const area = document.getElementById('renderArea')
+
+    for (let i = 0; i < pokemon.length; i++) {
+        const div = document.createElement('div')
+        div.className = 'card'
+
+        const img = document.createElement('img')
+        img.src = pokemon[i].img
+
+        div.appendChild(img)
+        area.appendChild(div)
+        
+    }
+}
+
+buildCards()

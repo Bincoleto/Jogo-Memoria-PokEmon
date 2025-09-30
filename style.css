@@ -14,11 +14,16 @@ body{
 }
 
 .container{
+    width: 80%;
+    height: auto;
     background-color: rgba(165, 42, 42, 0.579);
     border: 2px solid black;
     border-radius: 12px;
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    /* display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); */
     gap: 8px;
     padding: 1rem;
 }
@@ -38,4 +43,27 @@ body{
 .filpper:hover{
     background-color: rgba(173, 216, 230, 0.627);
     cursor: pointer;
+}
+
+.card{
+    width: 150px;
+    height: 200px;
+    background-color: rgba(245, 222, 94, 0.704);   
+    border: 2px solid black;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card:hover{
+    background-color: rgba(228, 230, 173, 0.72);
+    cursor: pointer;
+}
+
+.card img{
+    width: 100px;
+    height: auto;
+    background-size: cover;
+    background-position: center;
 }
