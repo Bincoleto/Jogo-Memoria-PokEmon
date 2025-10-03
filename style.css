@@ -28,7 +28,7 @@ body{
     padding: 1rem;
 }
 
-.filpper{
+.flipped{
     width: 150px;
     height: 200px;
     background-color: blue;
@@ -40,7 +40,7 @@ body{
     border-radius: 10px;
 }
 
-.filpper:hover{
+.flipped:hover{
     background-color: rgba(173, 216, 230, 0.627);
     cursor: pointer;
 }

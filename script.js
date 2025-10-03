@@ -15,7 +15,7 @@ async function fetchPokemons(){
 const getPokemons = async () => {
     const listaPokemons = []
     
-    while (listaPokemons.length < 14) {
+    while (listaPokemons.length < 7) {
         const date =  await fetchPokemons()
 
         if(date.sprites.other.dream_world.front_default !== null){
@@ -26,7 +26,11 @@ const getPokemons = async () => {
         }
         // console.log(listaPokemons)
     }
-    return listaPokemons
+
+    const listaPokemonsDuplicados = [...listaPokemons, ...listaPokemons]
+
+
+    return listaPokemonsDuplicados
 }
 
 
@@ -37,15 +41,24 @@ async function buildCards(){
 
     for (let i = 0; i < pokemon.length; i++) {
         const div = document.createElement('div')
-        div.className = 'card'
+        div.className = 'flipped'
 
         const img = document.createElement('img')
-        img.src = pokemon[i].img
 
-        div.appendChild(img)
         area.appendChild(div)
-        
+
+        div.addEventListener('click', function() {
+            // alert(`${pokemon[i].nome}`)
+            div.classList.remove('flipped')
+            div.classList.add('card')
+            img.src = pokemon[i].img
+            div.appendChild(img)
+            cartaVirada.push(pokemon[i].nome)
+            console.log(cartaVirada)
+        })
     }
 }
 
 buildCards()
+
+const cartaVirada = []
