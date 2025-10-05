@@ -14,7 +14,7 @@ body{
 }
 
 .container{
-    width: 80%;
+    width: 96%;
     height: auto;
     background-color: rgba(165, 42, 42, 0.579);
     border: 2px solid black;
@@ -66,4 +66,8 @@ body{
     height: auto;
     background-size: cover;
     background-position: center;
+}
+
+.no-click{
+    pointer-events: none;
 }
